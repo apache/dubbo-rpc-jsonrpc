@@ -83,7 +83,7 @@
             <groupId>org.mortbay.jetty</groupId>
             <artifactId>jetty</artifactId>
             <version>${jetty_version}</version>
-            <scope>test</scope>
+            <optional>true</optional>
         </dependency>
 	</dependencies>
 </project>
