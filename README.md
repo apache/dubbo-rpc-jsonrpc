@@ -34,6 +34,15 @@ Multi port:
 <dubbo:protocol id="jsonrpc1" name="jsonrpc" port="8080" />
 <dubbo:protocol id="jsonrpc2" name="jsonrpc" port="8081" />
 ```
+Multi protocol:
+```xml
+<dubbo:protocol name="dubbo" port="20880" />
+<dubbo:protocol name="jsonrpc" port="8080" />
+```
+<!-- 使用多个协议暴露服务 -->
+```xml
+<dubbo:service id="helloService" interface="com.alibaba.hello.api.HelloService" version="1.0.0" protocol="dubbo,jsonrpc" />
+```
 
 
 Jetty Server: (default)
