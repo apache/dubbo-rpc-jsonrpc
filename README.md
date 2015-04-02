@@ -101,6 +101,34 @@ curl -i -H 'content-type: application/json' -X POST -d '{"jsonrpc": "2.0", "meth
          "id": 1 }' 'http://127.0.0.1:18080/com.ofpay.api.PhoneNoCheckProvider'
 ```
 
+Python Client Example
+```python
+import httplib
+import json
+
+__author__ = 'caozupeng'
+
+
+def raw_client(app_params):
+    headers = {"Content-type": "application/x-www-form-urlencoded",
+               "Accept": "text/json"}
+    h1 = httplib.HTTPConnection('172.19.32.135', port=18080)
+    h1.request("POST", '/com.ofpay.ofdc.api.phone.PhoneNoCheckProvider', json.dumps(app_params), headers)
+    response = h1.getresponse()
+    return response.read()
+
+
+if __name__ == '__main__':
+    app_params = {
+        "jsonrpc": "2.0",
+        "method": "isPhoneNoLimit",
+        "params": ["MOBILE", "130000", "A001"],
+        "id": 1
+    }
+    print json.loads(raw_client(app_params), encoding='utf-8')
+```
+
+
 ## 文档资料
 
 [JSON-RPC 2.0 规范](http://www.jsonrpc.org/specification) 
