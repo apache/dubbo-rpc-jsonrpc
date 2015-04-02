@@ -34,6 +34,7 @@
         <dubbo_version>2.4.10</dubbo_version>
         <jsonrpc_version>1.1</jsonrpc_version>
         <jetty_version>6.1.26</jetty_version>
+        <jackson.version>2.0.2</jackson.version>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
     </properties>
@@ -50,6 +51,17 @@
             <groupId>com.github.briandilley.jsonrpc4j</groupId>
             <artifactId>jsonrpc4j</artifactId>
             <version>${jsonrpc_version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
         </dependency>
 
         <dependency>
