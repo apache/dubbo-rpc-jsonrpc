@@ -1,5 +1,21 @@
 [![Build Status](https://travis-ci.org/wuwen5/dubbo-rpc-jsonrpc.svg)](https://travis-ci.org/wuwen5/dubbo-rpc-jsonrpc)
 
+
+## Why HTTP
+在互联网快速迭代的大潮下，越来越多的公司选择nodejs、django、rails这样的快速脚本框架来开发web端应用
+而后端的服务用Java又是最合适的，这就产生了大量的跨语言的调用需求。  
+而http、json是天然合适作为跨语言的标准  
+虽然Dubbo的异步长连接协议效率很高，但是在脚本语言中，这点效率的损失并不重要  
+
+
+## Why Not RESTful
+Dubbox 在RESTful接口上已经做出了尝试，但是REST架构和dubbo原有的RPC架构是有区别的，  
+区别在于REST架构需要有资源(Resources)的定义，
+需要用到HTTP协议的基本操作GET、POST、PUT、DELETE对资源进行操作  
+Dubbox需要重新定义接口的属性，这对原有的Dubbo接口迁移是一个较大的负担。
+所以我们使用了和Dubbo理念较为一致的JsonRPC
+
+
 dubbo-rpc-jsonrpc
 =====================
 
@@ -110,7 +126,7 @@ __author__ = 'caozupeng'
 
 
 def raw_client(app_params):
-    headers = {"Content-type": "application/x-www-form-urlencoded",
+    headers = {"Content-type": "application/json-rpc",
                "Accept": "text/json"}
     h1 = httplib.HTTPConnection('172.19.32.135', port=18080)
     h1.request("POST", '/com.ofpay.ofdc.api.phone.PhoneNoCheckProvider', json.dumps(app_params), headers)
@@ -127,6 +143,9 @@ if __name__ == '__main__':
     }
     print json.loads(raw_client(app_params), encoding='utf-8')
 ```
+
+## TODO
+开发Python、Ruby、NodeJs的客户端，可以支持客户端的负载均衡。
 
 
 ## 文档资料
