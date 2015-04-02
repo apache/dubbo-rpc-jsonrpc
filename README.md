@@ -4,15 +4,16 @@
 ## Why HTTP
 在互联网快速迭代的大潮下，越来越多的公司选择nodejs、django、rails这样的快速脚本框架来开发web端应用
 而后端的服务用Java又是最合适的，这就产生了大量的跨语言的调用需求。  
-而http、json是天然合适作为跨语言的标准  
-虽然Dubbo的异步长连接协议效率很高，但是在脚本语言中，这点效率的损失并不重要  
+而http、json是天然合适作为跨语言的标准，各种语言都有成熟的类库    
+虽然Dubbo的异步长连接协议效率很高，但是在脚本语言中，这点效率的损失并不重要。  
 
 
 ## Why Not RESTful
 Dubbox 在RESTful接口上已经做出了尝试，但是REST架构和dubbo原有的RPC架构是有区别的，  
 区别在于REST架构需要有资源(Resources)的定义，
-需要用到HTTP协议的基本操作GET、POST、PUT、DELETE对资源进行操作  
-Dubbox需要重新定义接口的属性，这对原有的Dubbo接口迁移是一个较大的负担。
+需要用到HTTP协议的基本操作GET、POST、PUT、DELETE对资源进行操作。  
+Dubbox需要重新定义接口的属性，这对原有的Dubbo接口迁移是一个较大的负担。  
+相比之下，RESTful更合适互联网系统之间的调用，而RPC更合适一个系统内的调用，  
 所以我们使用了和Dubbo理念较为一致的JsonRPC
 
 
