@@ -120,7 +120,7 @@ public class JsonRpcProtocol extends AbstractProxyProtocol {
             if (server != null) {
                 try {
                     if (logger.isInfoEnabled()) {
-                        logger.info("Close hessian server " + server.getUrl());
+                        logger.info("Close jsonrpc server " + server.getUrl());
                     }
                     server.close();
                 } catch (Throwable t) {
