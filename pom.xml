@@ -43,6 +43,7 @@
 
     <scm>
         <connection>scm:git:git@github.com:ofpay/dubbo-rpc-jsonrpc.git</connection>
+        <developerConnection>scm:git:git@github.com:ofpay/dubbo-rpc-jsonrpc.git</developerConnection>
         <url>git@github.com:ofpay/dubbo-rpc-jsonrpc.git</url>
     </scm>
 
