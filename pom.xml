@@ -42,7 +42,7 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:https://github.com/ofpay/dubbo-rpc-jsonrpc.git</connection>
+        <connection>scm:git:git@github.com:ofpay/dubbo-rpc-jsonrpc.git</connection>
         <url>https://github.com/ofpay/dubbo-rpc-jsonrpc</url>
     </scm>
 
