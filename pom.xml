@@ -24,7 +24,7 @@
 
     <groupId>com.ofpay</groupId>
 	<artifactId>dubbo-rpc-jsonrpc</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>${project.artifactId}</name>
 	<description>The Json rpc module of dubbo project</description>
