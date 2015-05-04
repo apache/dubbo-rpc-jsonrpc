@@ -23,9 +23,9 @@ dubbo-rpc-jsonrpc
 ## maven依赖：
 ```xml
 <dependency>
-  <groupId>com.ofpay</groupId>
-  <artifactId>dubbo-rpc-jsonrpc</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+    <groupId>com.ofpay</groupId>
+    <artifactId>dubbo-rpc-jsonrpc</artifactId>
+    <version>1.0.1</version>
 </dependency>
 
 ```
@@ -145,8 +145,12 @@ if __name__ == '__main__':
     print json.loads(raw_client(app_params), encoding='utf-8')
 ```
 
-## TODO
-开发Python、Ruby、NodeJs的客户端，可以支持客户端的负载均衡。
+## Python客户端
+https://github.com/ofpay/dubbo-client-py
+
+## Nodejs客户端
+https://github.com/ofpay/dubbo-node-client
+
 
 
 ## 文档资料
