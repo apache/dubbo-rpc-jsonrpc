@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/ofpay/dubbo-rpc-jsonrpc.svg)](https://travis-ci.org/ofpay/dubbo-rpc-jsonrpc)
+[![Build Status](https://travis-ci.org/QianmiOpen/dubbo-rpc-jsonrpc.svg)](https://travis-ci.org/QianmiOpen/dubbo-rpc-jsonrpc)
 
 
 

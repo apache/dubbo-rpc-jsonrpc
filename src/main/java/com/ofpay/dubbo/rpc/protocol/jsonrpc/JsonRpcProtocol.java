@@ -89,11 +89,7 @@ public class JsonRpcProtocol extends AbstractProxyProtocol {
         jsonProxyFactoryBean.setServiceInterface(serviceType);
 
         jsonProxyFactoryBean.afterPropertiesSet();
-        try {
-            return (T) jsonProxyFactoryBean.getObject();
-        } catch (Exception e) {
-            throw new RpcException(e);
-        }
+        return (T) jsonProxyFactoryBean.getObject();
     }
 
     protected int getErrorCode(Throwable e) {
