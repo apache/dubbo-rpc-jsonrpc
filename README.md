@@ -1,6 +1,7 @@
 [![Build Status](https://travis-ci.org/ofpay/dubbo-rpc-jsonrpc.svg)](https://travis-ci.org/ofpay/dubbo-rpc-jsonrpc)
 
 
+
 ## Why HTTP
 在互联网快速迭代的大潮下，越来越多的公司选择nodejs、django、rails这样的快速脚本框架来开发web端应用
 而后端的服务用Java又是最合适的，这就产生了大量的跨语言的调用需求。  
@@ -65,6 +66,10 @@ Multi protocol:
 Jetty Server: (default)
 ```xml
 <dubbo:protocol ... server="jetty" />
+
+或jetty的最新版：
+<dubbo:protocol ... server="jetty9" />
+
 ```
 Maven:
 ```xml
@@ -78,6 +83,7 @@ Maven:
 Servlet Bridge Server: (recommend)
 ```xml
 <dubbo:protocol ... server="servlet" />
+
 ```
 
 web.xml：
