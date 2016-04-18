@@ -100,8 +100,8 @@ web.xml：
 ```
 注意，如果使用servlet派发请求：
 
-协议的端口<dubbo:protocol port="8080" />必须与servlet容器的端口相同，
-协议的上下文路径<dubbo:protocol contextpath="foo" />必须与servlet应用的上下文路径相同。
+协议的端口```<dubbo:protocol port="8080" />```必须与servlet容器的端口相同，
+协议的上下文路径```<dubbo:protocol contextpath="foo" />```必须与servlet应用的上下文路径相同。
 
 --------------
 ## Example
