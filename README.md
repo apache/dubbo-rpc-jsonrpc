@@ -103,6 +103,12 @@ web.xml：
 协议的端口```<dubbo:protocol port="8080" />```必须与servlet容器的端口相同，
 协议的上下文路径```<dubbo:protocol contextpath="foo" />```必须与servlet应用的上下文路径相同。
 
+CORS跨源支持:
+```xml
+<dubbo:protocol name="jsonrpc" ...  />
+	<dubbo:parameter key="cors" value="true" />
+</dubbo:protocol>
+```
 --------------
 ## Example
 
@@ -161,6 +167,8 @@ https://github.com/ofpay/dubbo-node-client
 https://github.com/JoeCao/dubbo_jsonrpc_example  
 使用docker运行
 
+## 浏览器调用
+需按前述开启CORS支持, 可使用 https://github.com/datagraph/jquery-jsonrpc
 
 ## 文档资料
 

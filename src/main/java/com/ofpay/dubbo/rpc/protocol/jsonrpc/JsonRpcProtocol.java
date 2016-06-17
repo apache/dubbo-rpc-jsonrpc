@@ -1,5 +1,17 @@
 package com.ofpay.dubbo.rpc.protocol.jsonrpc;
 
+import java.io.IOException;
+import java.net.SocketTimeoutException;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.remoting.RemoteAccessException;
+
 import com.alibaba.dubbo.common.URL;
 import com.alibaba.dubbo.remoting.http.HttpBinder;
 import com.alibaba.dubbo.remoting.http.HttpHandler;
@@ -11,27 +23,23 @@ import com.googlecode.jsonrpc4j.HttpException;
 import com.googlecode.jsonrpc4j.JsonRpcClientException;
 import com.googlecode.jsonrpc4j.JsonRpcServer;
 import com.googlecode.jsonrpc4j.spring.JsonProxyFactoryBean;
-import org.springframework.remoting.RemoteAccessException;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.net.SocketTimeoutException;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Created by wuwen on 15/4/1.
  */
 public class JsonRpcProtocol extends AbstractProxyProtocol {
+    
+    public static final String ACCESS_CONTROL_ALLOW_ORIGIN_HEADER = "Access-Control-Allow-Origin";
+    public static final String ACCESS_CONTROL_ALLOW_METHODS_HEADER = "Access-Control-Allow-Methods";
+    public static final String ACCESS_CONTROL_ALLOW_HEADERS_HEADER = "Access-Control-Allow-Headers";
 
     private final Map<String, HttpServer> serverMap = new ConcurrentHashMap<>();
 
     private final Map<String, JsonRpcServer> skeletonMap = new ConcurrentHashMap<>();
 
     private HttpBinder httpBinder;
+
+    private boolean cors;
 
     public JsonRpcProtocol() {
         super(HttpException.class, JsonRpcClientException.class);
@@ -51,15 +59,23 @@ public class JsonRpcProtocol extends AbstractProxyProtocol {
                 throws IOException, ServletException {
             String uri = request.getRequestURI();
             JsonRpcServer skeleton = skeletonMap.get(uri);
-            if (! request.getMethod().equalsIgnoreCase("POST")) {
-                response.setStatus(500);
-            } else {
+            if (cors) {
+                response.setHeader(ACCESS_CONTROL_ALLOW_ORIGIN_HEADER, "*");
+                response.setHeader(ACCESS_CONTROL_ALLOW_METHODS_HEADER, "POST");
+                response.setHeader(ACCESS_CONTROL_ALLOW_HEADERS_HEADER, "*");
+            }
+            if (request.getMethod().equalsIgnoreCase("OPTIONS")) {
+                response.setStatus(200);
+            } else if (request.getMethod().equalsIgnoreCase("POST")) {
+
                 RpcContext.getContext().setRemoteAddress(request.getRemoteAddr(), request.getRemotePort());
                 try {
                     skeleton.handle(request.getInputStream(), response.getOutputStream());
                 } catch (Throwable e) {
                     throw new ServletException(e);
                 }
+            } else {
+                response.setStatus(500);
             }
         }
 
@@ -72,6 +88,7 @@ public class JsonRpcProtocol extends AbstractProxyProtocol {
             server = httpBinder.bind(url, new InternalHandler());
             serverMap.put(addr, server);
         }
+        cors = url.getParameter("cors", false);
         final String path = url.getAbsolutePath();
         JsonRpcServer skeleton = new JsonRpcServer(impl, type);
         skeletonMap.put(path, skeleton);
