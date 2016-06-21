@@ -39,8 +39,6 @@ public class JsonRpcProtocol extends AbstractProxyProtocol {
 
     private HttpBinder httpBinder;
 
-    private boolean cors;
-
     public JsonRpcProtocol() {
         super(HttpException.class, JsonRpcClientException.class);
     }
@@ -54,6 +52,12 @@ public class JsonRpcProtocol extends AbstractProxyProtocol {
     }
 
     private class InternalHandler implements HttpHandler {
+    	
+        private boolean cors;
+
+        public InternalHandler(boolean cors) {
+            this.cors = cors;
+        }
 
         public void handle(HttpServletRequest request, HttpServletResponse response)
                 throws IOException, ServletException {
@@ -85,10 +89,9 @@ public class JsonRpcProtocol extends AbstractProxyProtocol {
         String addr = url.getIp() + ":" + url.getPort();
         HttpServer server = serverMap.get(addr);
         if (server == null) {
-            server = httpBinder.bind(url, new InternalHandler());
+            server = httpBinder.bind(url, new InternalHandler(url.getParameter("cors", false)));
             serverMap.put(addr, server);
         }
-        cors = url.getParameter("cors", false);
         final String path = url.getAbsolutePath();
         JsonRpcServer skeleton = new JsonRpcServer(impl, type);
         skeletonMap.put(path, skeleton);
