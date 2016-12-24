@@ -1,4 +1,4 @@
-package com.ofpay.dubbo.rpc.protocol.jsonrpc;
+package com.qianmi.dubbo.rpc.protocol.jsonrpc;
 
 import org.junit.Assert;
 import org.junit.Ignore;
@@ -10,7 +10,6 @@ import com.alibaba.dubbo.rpc.Exporter;
 import com.alibaba.dubbo.rpc.Invoker;
 import com.alibaba.dubbo.rpc.Protocol;
 import com.alibaba.dubbo.rpc.ProxyFactory;
-import com.ofpay.dubbo.rpc.protocol.jsonrpc.JsonRpcServiceImpl.MyException;
 
 /**
  * JsonRpcProtocolTest Created by wuwen on 15/4/1.
@@ -67,7 +66,7 @@ public class JsonRpcProtocolTest {
         try {
             client.customException();
             Assert.fail();
-        } catch (MyException expected) {
+        } catch (JsonRpcServiceImpl.MyException expected) {
         }
         invoker.destroy();
         exporter.unexport();

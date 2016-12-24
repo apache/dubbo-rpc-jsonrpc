@@ -1,4 +1,4 @@
-package com.ofpay.dubbo.rpc.protocol.jsonrpc;
+package com.qianmi.dubbo.rpc.protocol.jsonrpc;
 
 /**
  * Created by wuwen on 15/4/1.

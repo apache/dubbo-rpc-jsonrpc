@@ -1,4 +1,4 @@
-package com.ofpay.dubbo.rpc.protocol.jsonrpc;
+package com.qianmi.dubbo.rpc.protocol.jsonrpc;
 
 import java.io.IOException;
 import java.net.SocketTimeoutException;

@@ -22,14 +22,14 @@
         <version>7</version>
     </parent>
 
-    <groupId>com.ofpay</groupId>
+    <groupId>com.qianmi</groupId>
     <artifactId>dubbo-rpc-jsonrpc</artifactId>
     <version>1.0.2-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>${project.artifactId}</name>
     <description>The Json rpc module of dubbo project</description>
 
-    <url>https://github.com/ofpay/dubbo-rpc-jsonrpc</url>
+    <url>https://github.com/QianmiOpen/dubbo-rpc-jsonrpc</url>
 
     <licenses>
         <license>
@@ -41,9 +41,9 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:git@github.com:ofpay/dubbo-rpc-jsonrpc.git</connection>
-        <developerConnection>scm:git:git@github.com:ofpay/dubbo-rpc-jsonrpc.git</developerConnection>
-        <url>git@github.com:ofpay/dubbo-rpc-jsonrpc.git</url>
+        <connection>scm:git:git@github.com:QianmiOpen/dubbo-rpc-jsonrpc.git</connection>
+        <developerConnection>scm:git:git@github.com:QianmiOpen/dubbo-rpc-jsonrpc.git</developerConnection>
+        <url>git@github.com:QianmiOpen/dubbo-rpc-jsonrpc.git</url>
     </scm>
 
     <developers>

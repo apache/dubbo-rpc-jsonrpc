@@ -1,1 +1,1 @@
-jsonrpc=com.ofpay.dubbo.rpc.protocol.jsonrpc.JsonRpcProtocol
+jsonrpc=com.qianmi.dubbo.rpc.protocol.jsonrpc.JsonRpcProtocol

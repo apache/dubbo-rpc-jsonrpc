@@ -24,7 +24,7 @@ dubbo-rpc-jsonrpc
 ## maven依赖：
 ```xml
 <dependency>
-    <groupId>com.ofpay</groupId>
+    <groupId>com.qianmi</groupId>
     <artifactId>dubbo-rpc-jsonrpc</artifactId>
     <version>1.0.1</version>
 </dependency>
@@ -127,7 +127,7 @@ public interface PhoneNoCheckProvider {
 Client
 ```shell
 curl -i -H 'content-type: application/json' -X POST -d '{"jsonrpc": "2.0", "method": "isPhoneNoLimit", "params": [ "MOBILE", "130000", "A001"],
-         "id": 1 }' 'http://127.0.0.1:18080/com.ofpay.api.PhoneNoCheckProvider'
+         "id": 1 }' 'http://127.0.0.1:18080/com.qianmi.api.PhoneNoCheckProvider'
 ```
 
 Python Client Example
@@ -142,7 +142,7 @@ def raw_client(app_params):
     headers = {"Content-type": "application/json-rpc",
                "Accept": "text/json"}
     h1 = httplib.HTTPConnection('172.19.32.135', port=18080)
-    h1.request("POST", '/com.ofpay.ofdc.api.phone.PhoneNoCheckProvider', json.dumps(app_params), headers)
+    h1.request("POST", '/com.qianmi.ofdc.api.phone.PhoneNoCheckProvider', json.dumps(app_params), headers)
     response = h1.getresponse()
     return response.read()
 
@@ -158,10 +158,10 @@ if __name__ == '__main__':
 ```
 
 ## Python客户端
-https://github.com/ofpay/dubbo-client-py
+https://github.com/QianmiOpen/dubbo-client-py
 
 ## Nodejs客户端
-https://github.com/ofpay/dubbo-node-client
+https://github.com/QianmiOpen/dubbo-node-client
 
 ## 客户端服务端Example  
 https://github.com/JoeCao/dubbo_jsonrpc_example  
