@@ -59,7 +59,7 @@ public class JettyHttpServer extends AbstractHttpServer {
                     + e.getMessage(), e);
         }
     }
-
+    @Override
     public void close() {
         super.close();
         if (server != null) {
