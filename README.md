@@ -4,15 +4,21 @@
 
 ## Why HTTP
 With the rapid iteration of the Internet, more and more companies choose quick script frameworks such as nodejs, Django and rails to develop web-side applications.
+
 Java is the most suitable for back-end service, which resulting in a lot of cross-language invocation requirements.
+
 While HTTP and JSON are naturally suitable as cross-language standards, all languages have mature class libraries for them.
+
 Although Dubbo's asynchronous long connection protocol is efficient, in scripting languages this loss of efficiency is not important.  
 
 
 ## Why Not RESTful
 Dubbox has made an attempt on the RESTful interface, but there is some difference between the REST architecture and the original RPC architecture of Dubbo. 
+
 The difference is that the REST architecture needs the definition of resources and we should operate the resources using the basic HTTP methods —— GET, POST, PUT, DELETE.  
+
 Dubbox needs to redefine the properties of the interface, which is a big burden on the original interface migration of Dubbox.
+
 In contrast, RESTful is more appropriate for calls between Internet systems, and RPC is more appropriate for calls within a system, so we used JsonRPC which is more consistent with the Dubbo concept.
 
 
