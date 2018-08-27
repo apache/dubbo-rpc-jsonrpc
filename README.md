@@ -25,7 +25,7 @@ In contrast, RESTful is more appropriate for calls between Internet systems, and
 dubbo-rpc-jsonrpc
 =====================
 
-## maven依赖：
+## maven dependency：
 ```xml
 <dependency>
     <groupId>com.qianmi</groupId>
@@ -35,7 +35,7 @@ dubbo-rpc-jsonrpc
 
 ```
 
-## 配置：
+## Configuration：
 Define jsonrpc protocol:
 ```xml
  <dubbo:protocol name="jsonrpc" port="8080" server="jetty" />
@@ -61,7 +61,7 @@ Multi protocol:
 <dubbo:protocol name="dubbo" port="20880" />
 <dubbo:protocol name="jsonrpc" port="8080" />
 ```
-<!-- 使用多个协议暴露服务 -->
+<!-- use multi protocols to expose the service -->
 ```xml
 <dubbo:service id="helloService" interface="com.alibaba.hello.api.HelloService" version="1.0.0" protocol="dubbo,jsonrpc" />
 ```
@@ -71,7 +71,7 @@ Jetty Server: (default)
 ```xml
 <dubbo:protocol ... server="jetty" />
 
-或jetty的最新版：
+or the latest version of jetty:
 <dubbo:protocol ... server="jetty9" />
 
 ```
@@ -102,12 +102,12 @@ web.xml：
          <url-pattern>/*</url-pattern>
 </servlet-mapping>
 ```
-注意，如果使用servlet派发请求：
+Notification, if you use a servlet to send requests:
 
-协议的端口```<dubbo:protocol port="8080" />```必须与servlet容器的端口相同，
-协议的上下文路径```<dubbo:protocol contextpath="foo" />```必须与servlet应用的上下文路径相同。
+The protocol port ```<dubbo:protocol port="8080" />``` must be the same as the port of the servlet container.
+The protocol context path ```<dubbo:protocol contextpath="foo" />``` must be the same as the servlet application context path.
 
-CORS跨源支持:
+CORS(Cross-origin resource sharing):
 ```xml
 <dubbo:protocol name="jsonrpc" ...  />
 	<dubbo:parameter key="cors" value="true" />
@@ -120,10 +120,10 @@ JAVA API
 ```java
 public interface PhoneNoCheckProvider {
     /**
-     * 校验号码是否受限
-     * @param operators 运营商
-     * @param no 号码
-     * @param userid 用户编号
+     * check if the number is limited
+     * @param operators  operators
+     * @param no  number
+     * @param userid  the user identity
      * */
     boolean isPhoneNoLimit(Operators operators, String no, String userid);
 }
@@ -161,20 +161,20 @@ if __name__ == '__main__':
     print json.loads(raw_client(app_params), encoding='utf-8')
 ```
 
-## Python客户端
+## Python client
 https://github.com/QianmiOpen/dubbo-client-py
 
-## Nodejs客户端
+## Nodejs client
 https://github.com/QianmiOpen/dubbo-node-client
 
-## 客户端服务端Example  
+## example for Client server   
 https://github.com/JoeCao/dubbo_jsonrpc_example  
 使用docker运行
 
-## 浏览器调用
-需按前述开启CORS支持, 可使用 https://github.com/datagraph/jquery-jsonrpc
+## Browser call
+ou need to enable CORS support as described above, you can use https://github.com/datagraph/jquery-jsonrpc
 
-## 文档资料
+## Documentation
 
 [JSON-RPC 2.0 规范](http://www.jsonrpc.org/specification) 
  
