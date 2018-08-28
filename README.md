@@ -176,7 +176,7 @@ ou need to enable CORS support as described above, you can use https://github.co
 
 ## Documentation
 
-[JSON-RPC 2.0 规范](http://www.jsonrpc.org/specification) 
+[JSON-RPC 2.0 Specification](http://www.jsonrpc.org/specification) 
  
 [jsonrpc4j](https://github.com/briandilley/jsonrpc4j) 
  
