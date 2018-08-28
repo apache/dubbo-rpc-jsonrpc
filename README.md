@@ -169,7 +169,7 @@ https://github.com/QianmiOpen/dubbo-node-client
 
 ## example for Client server   
 https://github.com/JoeCao/dubbo_jsonrpc_example  
-使用docker运行
+run with docker
 
 ## Browser call
 ou need to enable CORS support as described above, you can use https://github.com/datagraph/jquery-jsonrpc
