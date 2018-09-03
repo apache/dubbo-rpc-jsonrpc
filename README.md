@@ -13,11 +13,11 @@ Although Dubbo's asynchronous long connection protocol is efficient, in scriptin
 
 
 ## Why Not RESTful
-Dubbox has made an attempt on the RESTful interface, but there is some difference between the REST architecture and the original RPC architecture of Dubbo. 
+Dubbo has made an attempt on the RESTful interface, but there is some difference between the REST architecture and the original RPC architecture of Dubbo. 
 
 The difference is that the REST architecture needs the definition of resources and we should operate the resources using the basic HTTP methods —— GET, POST, PUT, DELETE.  
 
-Dubbox needs to redefine the properties of the interface, which is a big burden on the original interface migration of Dubbox.
+Dubbo needs to redefine the properties of the interface, which is a big burden on the original interface migration of Dubbo.
 
 In contrast, RESTful is more appropriate for calls between Internet systems, and RPC is more appropriate for calls within a system, so we used JsonRPC which is more consistent with the Dubbo concept.
 
@@ -102,7 +102,7 @@ web.xml：
          <url-pattern>/*</url-pattern>
 </servlet-mapping>
 ```
-Notification, if you use a servlet to send requests:
+Be careful if you are using a servlet to send requests:
 
 The protocol port ```<dubbo:protocol port="8080" />``` must be the same as the port of the servlet container.
 The protocol context path ```<dubbo:protocol contextpath="foo" />``` must be the same as the servlet application context path.
@@ -164,15 +164,15 @@ if __name__ == '__main__':
 ## Python client
 https://github.com/QianmiOpen/dubbo-client-py
 
-## Nodejs client
+## Node.js client
 https://github.com/QianmiOpen/dubbo-node-client
 
-## example for Client server   
+## Examples for Client server   
 https://github.com/JoeCao/dubbo_jsonrpc_example  
 run with docker
 
 ## Browser call
-ou need to enable CORS support as described above, you can use https://github.com/datagraph/jquery-jsonrpc
+You need to enable CORS support as described above, see https://github.com/datagraph/jquery-jsonrpc
 
 ## Documentation
 
