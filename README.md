@@ -3,25 +3,29 @@
 
 
 ## Why HTTP
-在互联网快速迭代的大潮下，越来越多的公司选择nodejs、django、rails这样的快速脚本框架来开发web端应用
-而后端的服务用Java又是最合适的，这就产生了大量的跨语言的调用需求。  
-而http、json是天然合适作为跨语言的标准，各种语言都有成熟的类库    
-虽然Dubbo的异步长连接协议效率很高，但是在脚本语言中，这点效率的损失并不重要。  
+With the rapid iteration of the Internet, more and more companies choose quick script frameworks such as nodejs, Django and rails to develop web-side applications.
+
+Java is the most suitable for back-end service, which resulting in a lot of cross-language invocation requirements.
+
+While HTTP and JSON are naturally suitable as cross-language standards, all languages have mature class libraries for them.
+
+Although Dubbo's asynchronous long connection protocol is efficient, in scripting languages this loss of efficiency is not important.  
 
 
 ## Why Not RESTful
-Dubbox 在RESTful接口上已经做出了尝试，但是REST架构和dubbo原有的RPC架构是有区别的，  
-区别在于REST架构需要有资源(Resources)的定义，
-需要用到HTTP协议的基本操作GET、POST、PUT、DELETE对资源进行操作。  
-Dubbox需要重新定义接口的属性，这对原有的Dubbo接口迁移是一个较大的负担。  
-相比之下，RESTful更合适互联网系统之间的调用，而RPC更合适一个系统内的调用，  
-所以我们使用了和Dubbo理念较为一致的JsonRPC
+Dubbo has made an attempt on the RESTful interface, but there is some difference between the REST architecture and the original RPC architecture of Dubbo. 
+
+The difference is that the REST architecture needs the definition of resources and we should operate the resources using the basic HTTP methods —— GET, POST, PUT, DELETE.  
+
+Dubbo needs to redefine the properties of the interface, which is a big burden on the original interface migration of Dubbo.
+
+In contrast, RESTful is more appropriate for calls between Internet systems, and RPC is more appropriate for calls within a system, so we used JsonRPC which is more consistent with the Dubbo concept.
 
 
 dubbo-rpc-jsonrpc
 =====================
 
-## maven依赖：
+## maven dependency：
 ```xml
 <dependency>
     <groupId>com.qianmi</groupId>
@@ -31,7 +35,7 @@ dubbo-rpc-jsonrpc
 
 ```
 
-## 配置：
+## Configuration：
 Define jsonrpc protocol:
 ```xml
  <dubbo:protocol name="jsonrpc" port="8080" server="jetty" />
@@ -57,7 +61,7 @@ Multi protocol:
 <dubbo:protocol name="dubbo" port="20880" />
 <dubbo:protocol name="jsonrpc" port="8080" />
 ```
-<!-- 使用多个协议暴露服务 -->
+<!-- use multi protocols to expose the service -->
 ```xml
 <dubbo:service id="helloService" interface="com.alibaba.hello.api.HelloService" version="1.0.0" protocol="dubbo,jsonrpc" />
 ```
@@ -67,7 +71,7 @@ Jetty Server: (default)
 ```xml
 <dubbo:protocol ... server="jetty" />
 
-或jetty的最新版：
+or the latest version of jetty:
 <dubbo:protocol ... server="jetty9" />
 
 ```
@@ -98,12 +102,12 @@ web.xml：
          <url-pattern>/*</url-pattern>
 </servlet-mapping>
 ```
-注意，如果使用servlet派发请求：
+Be careful if you are using a servlet to send requests:
 
-协议的端口```<dubbo:protocol port="8080" />```必须与servlet容器的端口相同，
-协议的上下文路径```<dubbo:protocol contextpath="foo" />```必须与servlet应用的上下文路径相同。
+The protocol port ```<dubbo:protocol port="8080" />``` must be the same as the port of the servlet container.
+The protocol context path ```<dubbo:protocol contextpath="foo" />``` must be the same as the servlet application context path.
 
-CORS跨源支持:
+CORS(Cross-origin resource sharing):
 ```xml
 <dubbo:protocol name="jsonrpc" ...  />
 	<dubbo:parameter key="cors" value="true" />
@@ -116,10 +120,10 @@ JAVA API
 ```java
 public interface PhoneNoCheckProvider {
     /**
-     * 校验号码是否受限
-     * @param operators 运营商
-     * @param no 号码
-     * @param userid 用户编号
+     * check if the number is limited
+     * @param operators  operators
+     * @param no  number
+     * @param userid  the user identity
      * */
     boolean isPhoneNoLimit(Operators operators, String no, String userid);
 }
@@ -157,22 +161,22 @@ if __name__ == '__main__':
     print json.loads(raw_client(app_params), encoding='utf-8')
 ```
 
-## Python客户端
+## Python client
 https://github.com/QianmiOpen/dubbo-client-py
 
-## Nodejs客户端
+## Node.js client
 https://github.com/QianmiOpen/dubbo-node-client
 
-## 客户端服务端Example  
+## Examples for Client server   
 https://github.com/JoeCao/dubbo_jsonrpc_example  
-使用docker运行
+run with docker
 
-## 浏览器调用
-需按前述开启CORS支持, 可使用 https://github.com/datagraph/jquery-jsonrpc
+## Browser call
+You need to enable CORS support as described above, see https://github.com/datagraph/jquery-jsonrpc
 
-## 文档资料
+## Documentation
 
-[JSON-RPC 2.0 规范](http://www.jsonrpc.org/specification) 
+[JSON-RPC 2.0 Specification](http://www.jsonrpc.org/specification) 
  
 [jsonrpc4j](https://github.com/briandilley/jsonrpc4j) 
  
